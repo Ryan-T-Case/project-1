@@ -40,6 +40,10 @@ button {
     float: right;
 }
 
+.card-deck {
+    margin: 5%;
+}
+
 .footer {
     padding: 10px;
     background-color: orange;
