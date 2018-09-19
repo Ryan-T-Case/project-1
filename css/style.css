@@ -1,0 +1,56 @@
+
+.page-header{
+    text-align: center;
+    font-size: 65%;
+    background-image: url("../images/header5.png");
+    color: orange;
+    background-size: 10%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 5.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    margin-top: 2%;
+}
+
+.top-quote{
+    color: orange;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.5rem;
+}
+
+.quote{
+    text-indent: 680px;
+    color: orange;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.5rem;
+}
+
+.btn-circle {
+    width: 95px;
+    height: 95px;
+    line-height: 3.33;
+    border-radius: 85px;
+  }
+
+button {
+    margin: 2%;
+    float: right;
+}
+
+.card-deck {
+    margin: 5%;
+}
+
+.footer {
+    padding: 10px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    border-top: 4px solid orange;
+    margin-top: 10%;
+    position: relative;
+    height: 50px;
+}
