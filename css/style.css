@@ -29,8 +29,6 @@ h1 {
     font-size: 1.5rem;
 }
 
-
-
 .btn-outline-warning{
     border-radius: 85px;
     width: 95px;
@@ -47,9 +45,8 @@ h1 {
 }
 
 button {
-    margin: 2%;
-    box-shadow: 2px 3px rgb(134, 114, 94, .2);
-    float: right;;
+    margin: 1%;
+    box-shadow: 4px 5px rgb(134, 114, 94, .2);
 }
 
 
