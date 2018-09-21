@@ -49,6 +49,9 @@
                 <button class="btn btn-outline-warning btn-circle" data-icon="vegetables-icon">
                     <img src="images/vegetables.png">
                 </button>
+                <button class="btn btn-outline-warning btn-circle" data-icon="soup-icon">
+                    <img src="images/soup.png">
+                </button>
             </div>
         </div>
 
@@ -330,71 +333,9 @@
                             </small>
                         </div>
                     </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/250/250?image=835" alt="Card image cap"
-                            style="position:relative">
-                        <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
-                        <div class="card-body">
-                            <h5 class="card-title" id="recipe-name">Roasted Chicken</h5>
-                            <p class="card-text">"Fall in love with taking care of yourself. Mind and body."</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
-                                    for Recipe!</button>
-                                <!-- Modal -->
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h3 class="modal-title" id="recipe-name">Baked Chicken</h3>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="https://picsum.photos/750/550?image=835">
-                                            </div>
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
-                                                    <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
-                                                    <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-                                                </div>
-                                                <br>
-                                                <div class="row">
-                                                    <div class="col-lg-10 ml-auto">
-                                                        <div data-target="ingredients">
-                                                            <h3>Ingredients: </h3>
-                                                        </div>
-                                                        <div id="ingredients-appear-here"></div>
-                                                    </div>
-
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-lg-10 ml-auto">
-                                                        <div data-target="instructions">
-                                                            <h3>Instructions: </h3>
-                                                        </div>
-                                                        <div id="ingredients-appear-here"></div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </small>
-                        </div>
-                    </div>
+                    
                 </div>
-            </div>
+            </div> <!--End of fist row for the search result-->
 
             <div class="row">
                 <div class="card-deck">
@@ -588,30 +529,227 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!--end of search result for the second row-->
+
+            
+            <div class="row">
+                    <div class="card-deck">
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/250/250?image=835" alt="Card image cap"
+                                style="position:relative">
+                            <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
+                            <div class="card-body">
+                                <h5 class="card-title" id="recipe-name">Roasted Chicken</h5>
+                                <p class="card-text">"Fall in love with taking care of yourself. Mind and body."</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+                                        for Recipe!</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="recipe-name">Baked Chicken</h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="https://picsum.photos/750/550?image=835">
+                                                </div>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="ingredients">
+                                                                <h3>Ingredients: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="instructions">
+                                                                <h3>Instructions: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/250/250?image=835" alt="Card image cap"
+                                style="position:relative">
+                            <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
+                            <div class="card-body">
+                                <h5 class="card-title" id="recipe-name">Roasted Chicken</h5>
+                                <p class="card-text">"Fall in love with taking care of yourself. Mind and body."</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+                                        for Recipe!</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="recipe-name">Baked Chicken</h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="https://picsum.photos/750/550?image=835">
+                                                </div>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="ingredients">
+                                                                <h3>Ingredients: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="instructions">
+                                                                <h3>Instructions: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="https://picsum.photos/250/250?image=835" alt="Card image cap"
+                                style="position:relative">
+                            <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
+                            <div class="card-body">
+                                <h5 class="card-title" id="recipe-name">Roasted Chicken</h5>
+                                <p class="card-text">"Fall in love with taking care of yourself. Mind and body."</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+                                        for Recipe!</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="recipe-name">Baked Chicken</h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="https://picsum.photos/750/550?image=835">
+                                                </div>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto vl">.col-md-4 .ml-auto</div>
+                                                        <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="ingredients">
+                                                                <h3>Ingredients: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-lg-10 ml-auto">
+                                                            <div data-target="instructions">
+                                                                <h3>Instructions: </h3>
+                                                            </div>
+                                                            <div id="ingredients-appear-here"></div>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--end of search result for the third row-->
             <hr>
-        <h3>--Favorite Page Tab--</h3>
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="favorite-list">Favorites!</h1>
-            </div>
-        </div>
-
-
-
-        <h3>-Shopping List Tab-</h3>
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="shopping-list">Shopping List</h1>
-                <hr class="shopping-hr">
-                <div class="shopping-container">
-                </div>
-                <br>
-                <div id="map-appear-here" data-target="map">
-                ..Pretent there's a map here..
+            <h3>--Favorite Page Tab--</h3>
+            <!--Favorit Page-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="favorite-list">Favorites!</h1>
                 </div>
             </div>
-        </div>
+
+
+
+            <h3>-Shopping List Tab-</h3>
+            <!--shopping list-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="shopping-list">Shopping List</h1>
+                    <hr class="shopping-hr">
+                    <div class="shopping-container">
+                    </div>
+                    <br>
+                    <div id="map-appear-here" data-target="map">
+                        ..Pretent there's a map here..
+                    </div>
+                </div>
+            </div>
 
 
     </div>
@@ -619,6 +757,22 @@
     <div class="footer">
         <p>copyright 2018&copy;</p>
     </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+        });
+    </script>
 </body>
+
+
 
 </html>
