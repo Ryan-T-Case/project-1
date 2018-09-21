@@ -1,43 +1,4 @@
-//Array for search results when chicken is clicked
-var chickenResults = [{
-    title: "Yummy Chicken",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-1.jpg",
-    aggregateLikes: 100,
-    cookTime: "30 minutes"
-}, {
-    title: "Tasty Chicken",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-2.jpg",
-    aggregateLikes: 40,
-    cookTime: "60 minutes"
-}, {
-    title: "Just Okay Chicken",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-3.jpg",
-    aggregateLikes: 10,
-    cookTime: "25 minutes"
-}];
-//Array for search results when pork is clicked
-var porkResults = [{
-    title: "Yummy Pork",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-4.jpg",
-    aggregateLikes: 90,
-    cookTime: "35 minutes"
-}, {
-    title: "Tasty Pork",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-5.jpg",
-    aggregateLikes: 45,
-    cookTime: "65 minutes"
-}, {
-    title: "Just Okay Pork",
-    recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-    image: "assets/images/placeholder/placeholder-6.jpg",
-    aggregateLikes: 5,
-    cookTime: "32 minutes"
-}];
+// //Array for search results when chicken is clicked
 // var chickenResults = [{
 //     title: "Yummy Chicken",
 //     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
