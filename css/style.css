@@ -47,7 +47,7 @@ h1 {
 }
 
 button {
-    margin: 2%;
+    /* margin: 2%; */
     box-shadow: 2px 3px rgb(134, 114, 94, .2);
     float: right;;
 }
