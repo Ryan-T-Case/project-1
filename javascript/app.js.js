@@ -1,43 +1,14 @@
-// //Array for search results when chicken is clicked
-// var chickenResults = [{
-//     title: "Yummy Chicken",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-1.jpg",
-//     aggregateLikes: 100,
-//     cookTime: "30 minutes"
-// }, {
-//     title: "Tasty Chicken",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-2.jpg",
-//     aggregateLikes: 40,
-//     cookTime: "60 minutes"
-// }, {
-//     title: "Just Okay Chicken",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-3.jpg",
-//     aggregateLikes: 10,
-//     cookTime: "25 minutes"
-// }];
-// //Array for search results when pork is clicked
-// var porkResults = [{
-//     title: "Yummy Pork",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-4.jpg",
-//     aggregateLikes: 90,
-//     cookTime: "35 minutes"
-// }, {
-//     title: "Tasty Pork",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-5.jpg",
-//     aggregateLikes: 45,
-//     cookTime: "65 minutes"
-// }, {
-//     title: "Just Okay Pork",
-//     recipe: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Ut eu justo eu lectus viverra rhoncus quis sed quam. Nam vitae pulvinar tellus. Donec lacinia et libero vel rhoncus. Maecenas fermentum eu purus ut egestas. Nullam feugiat, lacus id pretium mattis, mauris tortor maximus lorem, lacinia bibendum orci sapien ut dui. Nam at semper elit. Integer suscipit dolor libero, id mollis ex varius a. Morbi varius augue elit. Curabitur consectetur efficitur urna, in blandit turpis auctor in. Nam viverra dui a nunc venenatis fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam at placerat lacus. Praesent blandit vel nunc luctus maximus.",
-//     image: "assets/images/placeholder/placeholder-6.jpg",
-//     aggregateLikes: 5,
-//     cookTime: "32 minutes"
-// }];
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCvczcDpxG0nIWYMR4Df_hPM4LiHGPnop4",
+    authDomain: "project-one-54fbd.firebaseapp.com",
+    databaseURL: "https://project-one-54fbd.firebaseio.com",
+    projectId: "project-one-54fbd",
+    storageBucket: "project-one-54fbd.appspot.com",
+    messagingSenderId: "945661053221"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
 
 
 
@@ -92,6 +63,7 @@ function returnSearchResultsForApi() {
             console.log(recipeArray);
             // TO DO: Add a function that adds data-attribute of Recipe ID to div that is holding the recipe.  This way, when the favorite button is clicked it knows which 
 
+            
 
 
         })
@@ -103,9 +75,7 @@ var number = 0;
 
 $(document.body).on("click", "button", function () {
     event.preventDefault();
-    $(this).attr("data-icon");
-    console.log($(this).attr("data-icon"));
-
+   
     if ($(this).attr("data-icon") === "chicken-icon") {
         searchQuery = "chicken"
         console.log("Search results " + searchQuery);
@@ -126,9 +96,14 @@ $(document.body).on("click", "button", function () {
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
+    else if ($(this).attr("data-icon") === "favorite-icon") {
+        console.log(" its selecting Favorite icon");
+        database.ref().set({recipe: 123});
+    }
 
 });
 
+var recipeIdforViewing; 
 
 
 // var of recipe in display window
@@ -136,13 +111,14 @@ var displayRecipe = {};
 
 function makeRecipeObjectForDisplayInRecipeView() {
 
+// TODO: Connect recipeIdforViewing in url of ajax
+
     $.ajax({
         url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/494401/information?includeNutrition=false",
         method: "GET",
         headers: {
             "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
             "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
-
         }
     })
         .then(function (response) {
@@ -156,24 +132,16 @@ function makeRecipeObjectForDisplayInRecipeView() {
             }
             console.log("Recipe by: " + response.creditText);
             var recipeSource = "Recipe by: " + response.creditText;
-
-
             var ingredientArrayForDisplay = [];
             var ingredientArrayForShoppingList = [];
 
             //for loop to loop through api and get ingredients
             for (var i = 0; i < response.extendedIngredients.length; i++) {
-                console.log(response.extendedIngredients[i].id);
-                console.log(response.extendedIngredients[i].measures.us.amount);
-                console.log(response.extendedIngredients[i].measures.us.unitLong);
-                console.log(response.extendedIngredients[i].original);
-                console.log(response.extendedIngredients[i].name);
                 var ingredientId = response.extendedIngredients[i].id;
                 var ingredientAmount = response.extendedIngredients[i].measures.us.amount;
                 var ingredientName = response.extendedIngredients[i].name;
                 var ingredientUnit = response.extendedIngredients[i].measures.us.unitLong;
                 var ingredientOriginal = response.extendedIngredients[i].original;
-
                 var ingredientsForShoppingList = {
                     ingredientId: ingredientId,
                     ingredientAmount: ingredientAmount,
@@ -210,16 +178,18 @@ function makeRecipeObjectForDisplayInRecipeView() {
 
 
 
-
+// Function for turning search result selected into an object
 $(document.body).on("click", ".search-result", function () {
     event.preventDefault();
-    $(this).attr("data-icon");
-
+   recipeIdforViewing =  $(this).attr("data-recipeId");
     makeRecipeObjectForDisplayInRecipeView()
 
 });
 
 
+
+
+//TO DO: Function that populates recipe object on the recipe view 
 
 
 
