@@ -160,6 +160,12 @@ $(document.body).on("click", "button", function () {
         returnSearchResultsForApi();
         
     }
+    else if ($(this).attr("data-icon")==="fish-icon") {
+        searchQuery = "fish"
+        console.log("Search results " + searchQuery);
+        returnSearchResultsForApi();
+        
+    }
     
 });
 
