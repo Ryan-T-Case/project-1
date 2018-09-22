@@ -27,6 +27,9 @@ $.ajax({
         console.log(response.results[0].title);
         console.log(response.baseUri);
 
+        //Clear the recipe array before pushin new data
+        recipeArray = [];
+
         // This for loop pushes key values for the API search into variables that then are used to create an object that is pushed to the recipe array 
         for (var i = 0; i < response.results.length; i++) {
             var id = response.results[i].id;
@@ -42,7 +45,6 @@ $.ajax({
                 servings: servings,
                 title: title
             }
-
             recipeArray.push(recipe);
 
         }
@@ -58,7 +60,7 @@ $.ajax({
             </div>
             <div class="card-footer">
               <small class="text-muted">
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg" data-recipe-id="${recipeArray[i].id}>Click
                   for Recipe!</button>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                   aria-hidden="true">
@@ -142,7 +144,7 @@ $(document.body).on("click", "button", function () {
         
     }
     else if ($(this).attr("data-icon")==="beef-icon") {
-        searchQuery = "beef"
+        searchQuery = "steak"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
         
