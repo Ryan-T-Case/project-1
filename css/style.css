@@ -15,21 +15,15 @@ h1 {
     margin-top: 2%;
 }
 
-.header-quote{
-    color: orange; 
-    font-family: 'Satisfy', cursive;
-    font-size: 1.5rem;
-    text-indent: 100px;
+.definition-noun{
+    margin-right: 33%;
 }
-
-.header-auther{
-    text-indent: 680px;
+.definition-noun, .definition{
+    font-family: 'Open Sans', sans-serif;
     color: orange;
-    font-family: 'Satisfy', cursive;
-    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 100;
 }
-
-
 
 .nav-tabs, #v-pills-tab, .nav-link:not(.active) {
     background: rgba(255, 178, 85, 0.3);
@@ -42,7 +36,7 @@ h1 {
 
 .nav-link{
     border: 5px solid white;
-    font-family: 'Playfair Display', serif;
+
 }
 
 
@@ -67,15 +61,31 @@ button {
     float: right;
 }
 
-
-button:hover {
-    -webkit-animation: bounce .3s infinite alternate;
-
+.intro, .end-intro {
+    text-align: center;
+    color: orange;
+    font-family: 'Satisfy', cursive;
+    margin: 2%;
+    animation: fadein 5s;
+}
+@-webkit-keyframes fadein { 
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
 
-/* @-webkit-keyframes bounce {
-    to { -webkit-transform: scale(1.2); }
-  } */
+.main-carousel {
+    margin-left: 1%;
+    margin-top: 5%;
+}
+
+.carousel-item {
+    width: 1000px;
+    height: 563px;
+}
 
 .card-title, .card-text{
     font-family: 'Playfair Display', serif;
@@ -103,13 +113,11 @@ h5 {
 .shopping-list, .favorite-list {
     font-family: 'Satisfy', cursive;
     color: orange;
+    font-weight: 100;
+    font-size: 50px;
     text-align: center;
-    font-weight: 400;
 }
-.shopping-hr {
-    border: 3px solid orange;
-    width: 500px;
-}
+
 .shopping-container {
         margin-top: 2%;
         background: rgba(212, 150, 73, 0.3);
