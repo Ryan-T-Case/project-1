@@ -51,7 +51,7 @@ $.ajax({
         console.log("Recipe Array " + recipeArray);
         for (var i = 0; i < 9; i++) {
             $(`#${i + 1}`).html(`
-            <img class="card-img-top" src="${recipeArray[i].image}" alt="Recipe Image"
+            <img class="card-img-top card-image" src="${recipeArray[i].image}" alt="Recipe Image"
             style="position:relative">
           <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
           <div class="card-body">
