@@ -15,7 +15,9 @@ h1 {
     font-weight: 800;
     margin-top: 2%;
 }
-
+.second-header{
+    display: inline-flex;
+}
 .definition-noun{
     margin-right: 33%;
 }
@@ -29,6 +31,7 @@ h1 {
 .nav-tabs, #v-pills-tab, .nav-link:not(.active) {
     background: rgba(255, 178, 85, 0.3);
     color: white;
+    display: inline-block;
 }
 
 .nav-tabs {
@@ -67,7 +70,7 @@ button {
     color: orange;
     font-family: 'Satisfy', cursive;
     margin: 2%;
-    animation: fadein 5s;
+    animation: fadein 10s;
 }
 @-webkit-keyframes fadein { 
     from {
@@ -148,3 +151,4 @@ h5 {
     height: 50px;
 }
 
+/* MEDIA QUERIES */
