@@ -47,50 +47,54 @@ var recipeArray = [];
 // search query from button selected
 var searchQuery = "";
 // This function calls the API for getting summerized recipe information to populate the search results.
-function returnSearchResultsForApi (){
-console.log('ajax is a function!')
-$.ajax({
-    // the headers are required by the API
-    url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&excludeIngredients=coconut&intolerances=egg%2C+gluten&number=10&offset=0&query="+ searchQuery + "&type=main+course",
-    method: "GET",
-    headers: {
-        "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
-        "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
-    }
-})
-    .then(function (response) {
-        console.log('inside ajax: ', searchQuery)
-        // console.log for testing
-        console.log(response);
-        console.log(response.results[0].id);
-        console.log(response.results[0].image);
-        console.log(response.results[0].readyInMinutes);
-        console.log(response.results[0].servings);
-        console.log(response.results[0].title);
-        console.log(response.baseUri);
-        
-
-        // This for loop pushes key values for the API search into variables that then are used to create an object that is pushed to the recipe array 
-        for (var i = 0; i < response.results.length; i++) {
-            var id = response.results[i].id;
-            var image = response.baseUri + response.results[i].image;
-            var readyInMinutes = response.results[i].readyInMinutes;
-            var servings = response.results[i].servings;
-            var title = response.results[i].title;
-
-            var recipe = {
-                id: id,
-                image: image,
-                readyInMinutes: readyInMinutes,
-                servings: servings,
-                title: title
-            }
-
-            recipeArray.push(recipe);
-
+function returnSearchResultsForApi() {
+    console.log('ajax is a function!')
+    $.ajax({
+        // the headers are required by the API
+        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&excludeIngredients=coconut&intolerances=egg%2C+gluten&number=10&offset=0&query=" + searchQuery + "&type=main+course",
+        method: "GET",
+        headers: {
+            "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+            "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
         }
-        console.log(recipeArray);
     })
+        .then(function (response) {
+            console.log('inside ajax: ', searchQuery)
+            // console.log for testing
+            console.log(response);
+            console.log(response.results[0].id);
+            console.log(response.results[0].image);
+            console.log(response.results[0].readyInMinutes);
+            console.log(response.results[0].servings);
+            console.log(response.results[0].title);
+            console.log(response.baseUri);
+
+
+            // This for loop pushes key values for the API search into variables that then are used to create an object that is pushed to the recipe array 
+            for (var i = 0; i < response.results.length; i++) {
+                var id = response.results[i].id;
+                var image = response.baseUri + response.results[i].image;
+                var readyInMinutes = response.results[i].readyInMinutes;
+                var servings = response.results[i].servings;
+                var title = response.results[i].title;
+
+                var recipe = {
+                    id: id,
+                    image: image,
+                    readyInMinutes: readyInMinutes,
+                    servings: servings,
+                    title: title
+                }
+
+                recipeArray.push(recipe);
+
+            }
+            console.log(recipeArray);
+            // TO DO: Add a function that adds data-attribute of Recipe ID to div that is holding the recipe.  This way, when the favorite button is clicked it knows which 
+
+
+
+        })
 };
 
 
@@ -101,75 +105,119 @@ $(document.body).on("click", "button", function () {
     event.preventDefault();
     $(this).attr("data-icon");
     console.log($(this).attr("data-icon"));
-  
-    if ($(this).attr("data-icon")==="chicken-icon") {
+
+    if ($(this).attr("data-icon") === "chicken-icon") {
         searchQuery = "chicken"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
-    else if ($(this).attr("data-icon")==="pork-icon") {
+    else if ($(this).attr("data-icon") === "pork-icon") {
         searchQuery = "ham"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
-    else if ($(this).attr("data-icon")==="beef-icon") {
+    else if ($(this).attr("data-icon") === "beef-icon") {
         searchQuery = "beef"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
-    else if ($(this).attr("data-icon")==="fish-icon") {
+    else if ($(this).attr("data-icon") === "fish-icon") {
         searchQuery = "fish"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
-    
+
 });
 
 
 
-// This variable will be populated from the div selected in the search result
-var recipeIdFromSearchView = recipeArray[0].id;
+// var of recipe in display window
+var displayRecipe = {};
 
-//This is the variable that will hold the ID of the recipe to populate the recipe window
-var recipeIdForRecipeInViewWindow = recipeIdFromSearchView;
-        $.ajax({
-            url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeIdForRecipeInViewWindow + "/information?includeNutrition=false",
-            method: "GET",
-            headers: {
-                "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
-                "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
-                
+function makeRecipeObjectForDisplayInRecipeView() {
+
+    $.ajax({
+        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/494401/information?includeNutrition=false",
+        method: "GET",
+        headers: {
+            "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+            "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+
+        }
+    })
+        .then(function (response) {
+            console.log(response);
+            var steps = [];
+            //Below the variables for the recipe object are being pulled and stored for creating the variable at the bottom
+            for (var i = 0; i < response.analyzedInstructions[0].steps.length; i++) {
+                console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " " + response.analyzedInstructions[0].steps[i].step);
+                var index = "Step " + response.analyzedInstructions[0].steps[i].number + ": " + response.analyzedInstructions[0].steps[i].step;
+                steps.push(index);
             }
-        })
-            .then(function (response) {
-                console.log(response);
-                for(var i = 0; i < response.analyzedInstructions[0].steps.length; i++){
-                    console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " ", + response.analyzedInstructions[0].steps[i].step);
-                }
-                console.log("Recipe by: " + response.creditText);
-                for(var i = 0; i < response.extendedIngredients.length; i++){
-                    console.log(response.extendedIngredients[i].id);
-                    console.log(response.extendedIngredients[i].measures.us.amount);
-                    console.log(response.extendedIngredients[i].measures.us.unitLong);
-                    console.log(response.extendedIngredients[i].metaInformation.original);
+            console.log("Recipe by: " + response.creditText);
+            var recipeSource = "Recipe by: " + response.creditText;
 
+
+            var ingredientArrayForDisplay = [];
+            var ingredientArrayForShoppingList = [];
+
+            //for loop to loop through api and get ingredients
+            for (var i = 0; i < response.extendedIngredients.length; i++) {
+                console.log(response.extendedIngredients[i].id);
+                console.log(response.extendedIngredients[i].measures.us.amount);
+                console.log(response.extendedIngredients[i].measures.us.unitLong);
+                console.log(response.extendedIngredients[i].original);
+                console.log(response.extendedIngredients[i].name);
+                var ingredientId = response.extendedIngredients[i].id;
+                var ingredientAmount = response.extendedIngredients[i].measures.us.amount;
+                var ingredientName = response.extendedIngredients[i].name;
+                var ingredientUnit = response.extendedIngredients[i].measures.us.unitLong;
+                var ingredientOriginal = response.extendedIngredients[i].original;
+
+                var ingredientsForShoppingList = {
+                    ingredientId: ingredientId,
+                    ingredientAmount: ingredientAmount,
+                    ingredientName: ingredientName,
+                    ingredientUnit: ingredientUnit
                 };
+                ingredientArrayForShoppingList.push(ingredientsForShoppingList);
+                ingredientArrayForDisplay.push(ingredientOriginal);
+            };
 
-                console.log(response.extendedIngredients.length);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
-                console.log(response.aggregateLikes);
- 
-            })
+            var ingredientsImageLInk = response.image
+            var displayingRecipeId = response.id
+            var cookTime = response.readyInMinutes;
+            var displayReciepServing = response.servings
+            var displayAggregateLikes = response.aggregateLikes
 
 
+            // object to be used to populate the recipe view when when the button on the search is selected
+            displayRecipe = {
+                steps: steps,
+                recipeSource: recipeSource,
+                displayIngredients: ingredientArrayForDisplay,
+                shoppingListINgredients: ingredientArrayForShoppingList,
+                image: ingredientsImageLInk,
+                recipeId: displayingRecipeId,
+                cookTime: cookTime,
+                servings: displayReciepServing,
+                aggregateLikes: displayAggregateLikes
+            };
+
+            console.log(displayRecipe);
+        });
+}
+
+
+
+
+$(document.body).on("click", ".search-result", function () {
+    event.preventDefault();
+    $(this).attr("data-icon");
+
+    makeRecipeObjectForDisplayInRecipeView()
+
+});
 
 
 
