@@ -26,7 +26,7 @@ h1 {
     font-weight: 100;
 }
 
-.nav-tabs, #v-pills-tab, .nav-link:not(.active) {
+/* .nav-tabs, #v-pills-tab, .nav-link:not(.active) {
     background: rgba(255, 178, 85, 0.3);
     color: white;
 }
@@ -38,7 +38,7 @@ h1 {
 .nav-link{
     border: 5px solid white;
 
-}
+} */
 
 
 .btn-outline-warning{
