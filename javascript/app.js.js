@@ -48,7 +48,7 @@ var recipeArray = [];
 var searchQuery = "";
 // This function calls the API for getting summerized recipe information to populate the search results.
 function returnSearchResultsForApi (){
-
+console.log('ajax is a function!')
 $.ajax({
     // the headers are required by the API
     url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&excludeIngredients=coconut&intolerances=egg%2C+gluten&number=10&offset=0&query="+ searchQuery + "&type=main+course",
@@ -59,6 +59,7 @@ $.ajax({
     }
 })
     .then(function (response) {
+        console.log('inside ajax: ', searchQuery)
         // console.log for testing
         console.log(response);
         console.log(response.results[0].id);
@@ -67,6 +68,7 @@ $.ajax({
         console.log(response.results[0].servings);
         console.log(response.results[0].title);
         console.log(response.baseUri);
+        
 
         // This for loop pushes key values for the API search into variables that then are used to create an object that is pushed to the recipe array 
         for (var i = 0; i < response.results.length; i++) {
@@ -106,7 +108,7 @@ $(document.body).on("click", "button", function () {
         returnSearchResultsForApi();
     }
     else if ($(this).attr("data-icon")==="pork-icon") {
-        searchQuery = "pork"
+        searchQuery = "ham"
         console.log("Search results " + searchQuery);
         returnSearchResultsForApi();
     }
@@ -122,6 +124,54 @@ $(document.body).on("click", "button", function () {
     }
     
 });
+
+
+
+// This variable will be populated from the div selected in the search result
+var recipeIdFromSearchView = recipeArray[0].id;
+
+//This is the variable that will hold the ID of the recipe to populate the recipe window
+var recipeIdForRecipeInViewWindow = recipeIdFromSearchView;
+        $.ajax({
+            url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeIdForRecipeInViewWindow + "/information?includeNutrition=false",
+            method: "GET",
+            headers: {
+                "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+                "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+                
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+                for(var i = 0; i < response.analyzedInstructions[0].steps.length; i++){
+                    console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " ", + response.analyzedInstructions[0].steps[i].step);
+                }
+                console.log("Recipe by: " + response.creditText);
+                for(var i = 0; i < response.extendedIngredients.length; i++){
+                    console.log(response.extendedIngredients[i].id);
+                    console.log(response.extendedIngredients[i].measures.us.amount);
+                    console.log(response.extendedIngredients[i].measures.us.unitLong);
+                    console.log(response.extendedIngredients[i].metaInformation.original);
+
+                };
+
+                console.log(response.extendedIngredients.length);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+                console.log(response.aggregateLikes);
+ 
+            })
+
+
+
+
 
 
 
