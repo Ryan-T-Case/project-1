@@ -31,7 +31,6 @@
                 aria-controls="v-pills-profile" aria-selected="false">Favorites</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
                 aria-controls="v-pills-messages" aria-selected="false">Shopping</a>
-
         </div>
         <h6 class="definition-noun" style="font-style:italic">noun informal</h5>
 
@@ -868,6 +867,21 @@
     <div class="footer">
         <p>copyright 2018&copy;</p>
     </div>
+    <script src="javascript/app.js"></script>
+
+
+    <!-- <script>
+        $(document).ready(function () {
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+        });
+    </script> -->
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
