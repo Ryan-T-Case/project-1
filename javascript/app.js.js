@@ -56,15 +56,10 @@ function returnSearchResultsForApi() {
                     servings: servings,
                     title: title
                 }
-
                 recipeArray.push(recipe);
-
             }
             console.log(recipeArray);
             // TO DO: Add a function that adds data-attribute of Recipe ID to div that is holding the recipe.  This way, when the favorite button is clicked it knows which 
-
-            
-
 
         })
 };
@@ -98,7 +93,10 @@ $(document.body).on("click", "button", function () {
     }
     else if ($(this).attr("data-icon") === "favorite-icon") {
         console.log(" its selecting Favorite icon");
-        database.ref().set({recipe: 123});
+       if(!displayRecipe.favorite){
+        displayRecipe.favorite = true;
+        database.ref().push({favorite: displayRecipe},);
+       }
     }
 
 });
@@ -114,7 +112,7 @@ function makeRecipeObjectForDisplayInRecipeView() {
 // TODO: Connect recipeIdforViewing in url of ajax
 
     $.ajax({
-        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/494401/information?includeNutrition=false",
+        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/197775/information?includeNutrition=false",
         method: "GET",
         headers: {
             "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
@@ -169,7 +167,8 @@ function makeRecipeObjectForDisplayInRecipeView() {
                 recipeId: displayingRecipeId,
                 cookTime: cookTime,
                 servings: displayReciepServing,
-                aggregateLikes: displayAggregateLikes
+                aggregateLikes: displayAggregateLikes,
+                favorited: false
             };
 
             console.log(displayRecipe);
