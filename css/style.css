@@ -35,7 +35,7 @@ h1 {
 }
 
 .nav-tabs {
-    width: 95px;
+    width: 90px;
 }
 
 .nav-link{
@@ -43,6 +43,10 @@ h1 {
 
 }
 
+.image{
+    width: 300px;
+    height: 200px;
+}
 
 .btn-outline-warning{
     border-radius: 85px;
@@ -57,7 +61,14 @@ h1 {
     height: 35px;
     background: url("../images/heart-sm.png");
     background-size: 100%;
+    animation: glowing 1500ms infinite;
 }
+
+@-webkit-keyframes glowing {
+    0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+    100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  }
 
 button {
     margin: 1%;
@@ -70,7 +81,7 @@ button {
     color: orange;
     font-family: 'Satisfy', cursive;
     margin: 2%;
-    animation: fadein 10s;
+    animation: fadein 5s;
 }
 @-webkit-keyframes fadein { 
     from {
