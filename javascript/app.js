@@ -210,3 +210,93 @@ for (i = 0; i < locations.length; i++) {
   })(marker, i));
 };
 // end of google maps code
+
+
+var recipeIdforViewing; 
+
+
+// global var of recipe in display window
+var displayRecipe = {};
+
+
+
+// Function that calls api to create an object for 
+function makeRecipeObjectForDisplayInRecipeView() {
+    $.ajax({
+        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/197775/information?includeNutrition=false",
+        method: "GET",
+        headers: {
+            "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+            "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+        }
+    })
+        .then(function (response) {
+            console.log(response);
+            var steps = [];
+            //Below the variables for the recipe object are being pulled and stored for creating the variable at the bottom
+            for (var i = 0; i < response.analyzedInstructions[0].steps.length; i++) {
+                console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " " + response.analyzedInstructions[0].steps[i].step);
+                var index = "Step " + response.analyzedInstructions[0].steps[i].number + ": " + response.analyzedInstructions[0].steps[i].step;
+                steps.push(index);
+            }
+            console.log("Recipe by: " + response.creditText);
+            var recipeSource = "Recipe by: " + response.creditText;
+            var ingredientArrayForDisplay = [];
+            var ingredientArrayForShoppingList = [];
+
+            //for loop to loop through api and get ingredients
+            for (var i = 0; i < response.extendedIngredients.length; i++) {
+                var ingredientId = response.extendedIngredients[i].id;
+                var ingredientAmount = response.extendedIngredients[i].measures.us.amount;
+                var ingredientName = response.extendedIngredients[i].name;
+                var ingredientUnit = response.extendedIngredients[i].measures.us.unitLong;
+                var ingredientOriginal = response.extendedIngredients[i].original;
+                var ingredientsForShoppingList = {
+                    ingredientId: ingredientId,
+                    ingredientAmount: ingredientAmount,
+                    ingredientName: ingredientName,
+                    ingredientUnit: ingredientUnit
+                };
+                ingredientArrayForShoppingList.push(ingredientsForShoppingList);
+                ingredientArrayForDisplay.push(ingredientOriginal);
+            };
+
+            var ingredientsImageLInk = response.image
+            var displayingRecipeId = response.id
+            var cookTime = response.readyInMinutes;
+            var displayReciepServing = response.servings
+            var displayAggregateLikes = response.aggregateLikes
+
+
+            // object to be used to populate the recipe view when when the button on the search is selected
+            displayRecipe = {
+                steps: steps,
+                recipeSource: recipeSource,
+                displayIngredients: ingredientArrayForDisplay,
+                shoppingListINgredients: ingredientArrayForShoppingList,
+                image: ingredientsImageLInk,
+                recipeId: displayingRecipeId,
+                cookTime: cookTime,
+                servings: displayReciepServing,
+                aggregateLikes: displayAggregateLikes,
+                favorited: false
+            };
+
+            console.log(displayRecipe);
+        });
+}
+
+
+
+// Function for turning search result selected into an object
+$(document.body).on("click", ".search-result", function () {
+    event.preventDefault();
+   recipeIdforViewing =  $(this).attr("data-recipeId");
+    makeRecipeObjectForDisplayInRecipeView()
+
+});
+
+
+
+
+//TO DO: Function that populates recipe object on the recipe view 
