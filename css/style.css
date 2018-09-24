@@ -28,20 +28,9 @@ h1 {
     font-weight: 100;
 }
 
-/* .nav-tabs, #v-pills-tab, .nav-link:not(.active) {
-    background: rgba(255, 178, 85, 0.3);
-    color: white;
-    display: inline-block;
+.nav-tabs{
+    color: orange;
 }
-
-.nav-tabs {
-    width: 90px;
-}
-
-.nav-link{
-    border: 5px solid white;
-
-} */
 
 .card-img-top{
     width: 300px;
@@ -53,6 +42,7 @@ h1 {
     width: 95px;
     height: 95px;
     line-height: 3.33;
+    animation: glowing 1500ms infinite;
 }
 
 .btn-outline-danger{
@@ -61,26 +51,27 @@ h1 {
     height: 35px;
     background: url("../images/heart-sm.png");
     background-size: 100%;
-    animation: glowing 1500ms infinite;
 }
 
-@-webkit-keyframes glowing {
-    0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-    50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
-    100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+
+
+  @-webkit-keyframes glowing {
+    0% { background-color: rgb(255, 255, 255); -webkit-box-shadow: 0 0 3px rgb(255, 255, 255); }
+    50% { background-color: rgba(248, 153, 44, 0.164); -webkit-box-shadow: rgba(233, 198, 158, 0.411); }
+    100% { background-color: rgb(255, 255, 255); -webkit-box-shadow: 0 0 3px rgb(255, 255, 255); }
   }
 
 button {
     margin: 1%;
     box-shadow: 4px 5px rgb(134, 114, 94, .2);
-    float: right;
+    /* float: right; */
 }
 
-.intro, .end-intro {
-    text-align: center;
+.intro {
+    margin-left: 10%;
+    margin-top: 40px;
     color: orange;
     font-family: 'Satisfy', cursive;
-    margin: 2%;
     animation: fadein 5s;
 }
 @-webkit-keyframes fadein { 
@@ -98,7 +89,7 @@ button {
 }
 
 .carousel-item {
-    width: 1000px;
+    width: 1150px;
     height: 563px;
 }
 
@@ -147,7 +138,7 @@ h5 {
 }
 
 #map-appear-here {
-    height: 500px;
+
     background: rgba(138, 119, 97, 0.3);
 }
 
