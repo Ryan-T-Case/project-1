@@ -61,30 +61,26 @@ $.ajax({
           </div>
           <div class="card-footer">
             <small class="text-muted">
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+              <button type="button" class="btn btn-warning view-recipe" data-recipeId="${recipeArray[i].id}" data-toggle="modal" data-target=".bd-example-modal-lg">Click
                 for Recipe!</button>
               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h3 class="modal-title" id="recipe-name">Baked
-                        Chicken</h3>
+                      <h3 class="modal-title" id="display-recipe-name"></h3>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      <img src="https://picsum.photos/750/550?image=835">
+                      <img class="recipe-image">
                     </div>
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-md-4 ml-auto vl">.col-sm-2
-                          .ml-auto</div>
-                        <div class="col-md-4 ml-auto vl">.col-sm-2
-                          .ml-auto</div>
-                        <div class="col-md-4 ml-auto">.col-sm-2
-                          .ml-auto</div>
+                        <div class="col-md-4 ml-auto vl display-servings"></div>
+                        <div class="col-md-4 ml-auto vl display-cook-time"></div>
+                        <div class="col-md-4 ml-auto display-likes"></div>
                       </div>
                       <br>
                       <div class="row">
@@ -92,7 +88,7 @@ $.ajax({
                           <div data-target="ingredients">
                             <h3>Ingredients: </h3>
                           </div>
-                          <div id="ingredients-appear-here"></div>
+                          <ul id="ingredients-appear-here"></ul>
                         </div>
 
                       </div>
@@ -102,9 +98,14 @@ $.ajax({
                           <div data-target="instructions">
                             <h3>Instructions: </h3>
                           </div>
-                          <div id="ingredients-appear-here"></div>
+                          <div id="instructions-appear-here"></div>
                         </div>
-
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-10 ml-auto">
+                          <div class="display-source">
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -223,7 +224,7 @@ var displayRecipe = {};
 // Function that calls api to create an object for 
 function makeRecipeObjectForDisplayInRecipeView() {
     $.ajax({
-        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/197775/information?includeNutrition=false",
+        url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeIdforViewing + "/information?includeNutrition=false",
         method: "GET",
         headers: {
             "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
@@ -261,11 +262,12 @@ function makeRecipeObjectForDisplayInRecipeView() {
                 ingredientArrayForDisplay.push(ingredientOriginal);
             };
 
-            var ingredientsImageLInk = response.image
-            var displayingRecipeId = response.id
+            var ingredientsImageLInk = response.image;
+            var displayingRecipeId = response.id;
             var cookTime = response.readyInMinutes;
-            var displayReciepServing = response.servings
-            var displayAggregateLikes = response.aggregateLikes
+            var displayReciepServing = response.servings;
+            var displayAggregateLikes = response.aggregateLikes;
+            var displayRecipeTitle = response.title;
 
 
             // object to be used to populate the recipe view when when the button on the search is selected
@@ -279,24 +281,34 @@ function makeRecipeObjectForDisplayInRecipeView() {
                 cookTime: cookTime,
                 servings: displayReciepServing,
                 aggregateLikes: displayAggregateLikes,
-                favorited: false
+                favorited: false,
+                title: displayRecipeTitle
             };
 
             console.log(displayRecipe);
+
+            //display data in the recipe view window
+            $("#display-recipe-name").text(displayRecipe.title);
+            $(".recipe-image").attr("src", displayRecipe.image);
+            $(".display-servings").html(`<h4>Yields: ${displayRecipe.servings} servings</h4>`);
+            $(".display-cook-time").html(`<h4>Cook Time: ${displayRecipe.cookTime} minutes</h4>`);
+            $(".display-likes").html(`<h4>Likes: ${displayRecipe.aggregateLikes}</h4>`);
+            $("#ingredients-appear-here").empty();
+            for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
+              $("#ingredients-appear-here").append(`<li>${displayRecipe.displayIngredients[i]}</li>`);
+            }
+            $("#instructions-appear-here").empty();
+            for (var i = 0; i < displayRecipe.steps.length; i++) {
+              $("#instructions-appear-here").append(`<p>${displayRecipe.steps[i]}`);
+            }
         });
-}
+};
 
 
 
 // Function for turning search result selected into an object
-$(document.body).on("click", ".search-result", function () {
+$(document).on("click", ".view-recipe", function () {
     event.preventDefault();
    recipeIdforViewing =  $(this).attr("data-recipeId");
-    makeRecipeObjectForDisplayInRecipeView()
-
+    makeRecipeObjectForDisplayInRecipeView();
 });
-
-
-
-
-//TO DO: Function that populates recipe object on the recipe view 
