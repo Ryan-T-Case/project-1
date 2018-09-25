@@ -65,13 +65,15 @@ h5 {
     width: 95px;
     height: 95px;
     line-height: 3.33;
+    float: right;
 }
-.btn-outline-danger{
-    border-radius: 25px;
-    width: 35px;
-    height: 35px;
-    background: url("../images/heart-sm.png");
-    background-size: 100%;
+.btn-outline-info{
+    border-radius: 65px;
+    width: 55px;
+    height: 55px;
+    background: url("../images/shopping-cart.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
 }
 button {
     margin: 1%;
@@ -125,7 +127,7 @@ button {
 p:hover{
     color: orange;
 }
-/*shopping map page*/
+/*shopping + map page*/
 .shopping-list, .favorite-list {
     font-family: 'Satisfy', cursive;
     color: orange;
@@ -145,16 +147,13 @@ p:hover{
         color: white;
         position: relative;
 }
-#map-appear-here {
-    background: rgba(138, 119, 97, 0.3);
-}
 #map{
     height: 500px;
     width: 100%;
 }
 
 /*footer*/
-.footer {
+footer {
     padding: 10px;
     background-color: rgb(255,193,7);
     color: white;
@@ -163,6 +162,8 @@ p:hover{
     margin-top: 10%;
     position: relative;
     height: 50px;
+    font-family: 'Playfair Display', serif;
+    
 }
 
 /* MEDIA QUERIES */
