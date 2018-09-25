@@ -66,6 +66,13 @@ h5 {
     height: 95px;
     line-height: 3.33;
 }
+.btn-outline-danger{
+    border-radius: 25px;
+    width: 35px;
+    height: 35px;
+    background: url("../images/heart-sm.png");
+    background-size: 100%;
+}
 button {
     margin: 1%;
     box-shadow: 4px 5px rgb(134, 114, 94, .2);
@@ -118,6 +125,26 @@ button {
 p:hover{
     color: orange;
 }
+/*shopping map page*/
+.shopping-list, .favorite-list {
+    font-family: 'Satisfy', cursive;
+    color: orange;
+    font-weight: 100;
+    font-size: 50px;
+    text-align: center;
+}
+.shopping-container {
+        margin-top: 2%;
+        background: rgba(212, 150, 73, 0.3);
+        text-shadow: 0 0 20px rgb(148, 133, 133);
+        padding: 2%;
+        font-size: 35px;
+        max-width: 60%;
+        height: 600px;
+        margin-left: 20%;
+        color: white;
+        position: relative;
+}
 #map-appear-here {
     background: rgba(138, 119, 97, 0.3);
 }
@@ -132,9 +159,10 @@ p:hover{
     background-color: rgb(255,193,7);
     color: white;
     text-align: center;
-    position: static;
+    border-top: 4px solid orange;
+    margin-top: 10%;
+    position: relative;
     height: 50px;
-    width: 100%;
 }
 
 /* MEDIA QUERIES */

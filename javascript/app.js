@@ -108,7 +108,7 @@ $.ajax({
                       </div>
                     </div>
                     <div class="modal-footer"> 
-
+                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
                     </div>
                   </div>
                 </div>
