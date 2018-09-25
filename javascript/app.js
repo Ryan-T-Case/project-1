@@ -51,9 +51,8 @@ $.ajax({
         console.log("Recipe Array " + recipeArray);
         for (var i = 0; i < 9; i++) {
             $(`#${i + 1}`).html(`
-            <img class="card-img-top" src="${recipeArray[i].image}" alt="Recipe Image"
+            <img class="card-img-top card-image" src="${recipeArray[i].image}" alt="Recipe Image"
             style="position:relative">
-          <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
           <div class="card-body">
             <h5 class="card-title" id="recipe-name">${recipeArray[i].title}</h5>
             <p class="card-text">"Servings: ${recipeArray[i].servings}"</p>
@@ -77,28 +76,28 @@ $.ajax({
                       <img class="recipe-image">
                     </div>
                     <div class="container-fluid">
-                      <div class="row">
+                      <div class="row recipe-pre">
                         <div class="col-md-4 ml-auto vl display-servings"></div>
                         <div class="col-md-4 ml-auto vl display-cook-time"></div>
                         <div class="col-md-4 ml-auto display-likes"></div>
                       </div>
                       <br>
                       <div class="row">
-                        <div class="col-lg-10 ml-auto">
+                        <div class="col-md-12 ml-auto">
                           <div data-target="ingredients">
                             <h3>Ingredients: </h3>
                           </div>
-                          <ul id="ingredients-appear-here"></ul>
+                          <ul class="recipe-content" id="ingredients-appear-here"></ul>
                         </div>
 
                       </div>
                       <br>
                       <div class="row">
-                        <div class="col-lg-10 ml-auto">
+                        <div class="col-lg-12 ml-auto">
                           <div data-target="instructions">
                             <h3>Instructions: </h3>
                           </div>
-                          <div id="instructions-appear-here"></div>
+                          <div class="recipe-content" id="instructions-appear-here"></div>
                         </div>
                       </div>
                       <div class="row">
@@ -108,8 +107,8 @@ $.ajax({
                         </div>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
+                    <div class="modal-footer"> 
+                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
                     </div>
                   </div>
                 </div>
@@ -120,6 +119,12 @@ $.ajax({
         }
     })
 };
+
+//make it highlight on click
+$('li', 'p').click(function(){
+  $(this).css('color','orange');
+  console.log("click");
+});
 
 //Search Results Functionality
 
@@ -295,7 +300,7 @@ function makeRecipeObjectForDisplayInRecipeView() {
             $(".display-likes").html(`<h4>Likes: ${displayRecipe.aggregateLikes}</h4>`);
             $("#ingredients-appear-here").empty();
             for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
-              $("#ingredients-appear-here").append(`<li>${displayRecipe.displayIngredients[i]}</li>`);
+              $("#ingredients-appear-here").append(`<input type="checkbox"/ p>${displayRecipe.displayIngredients[i]}<br>`);
             }
             $("#instructions-appear-here").empty();
             for (var i = 0; i < displayRecipe.steps.length; i++) {
