@@ -32,6 +32,7 @@ h1 {
     color: orange;
 }
 
+
 .card-img-top{
     width: 300px;
     height: 200px;
@@ -42,24 +43,16 @@ h1 {
     width: 95px;
     height: 95px;
     line-height: 3.33;
-    animation: glowing 1500ms infinite;
 }
 
 .btn-outline-danger{
-    border-radius:35px;
+    border-radius: 25px;
     width: 35px;
     height: 35px;
     background: url("../images/heart-sm.png");
     background-size: 100%;
 }
 
-
-
-  @-webkit-keyframes glowing {
-    0% { background-color: rgb(255, 255, 255); -webkit-box-shadow: 0 0 3px rgb(255, 255, 255); }
-    50% { background-color: rgba(248, 153, 44, 0.164); -webkit-box-shadow: rgba(233, 198, 158, 0.411); }
-    100% { background-color: rgb(255, 255, 255); -webkit-box-shadow: 0 0 3px rgb(255, 255, 255); }
-  }
 
 button {
     margin: 1%;
@@ -89,7 +82,7 @@ button {
 }
 
 .carousel-item {
-    width: 1150px;
+    width: 100%;
     height: 563px;
 }
 
@@ -108,6 +101,12 @@ h5 {
 
 .card{
     box-shadow: 2px 5px rgb(134, 114, 94, .2);
+}
+
+.click-for-recipe{
+    width: 100%;
+    font-size: 100%;
+    margin-right: 5%;
 }
 
 /*pop up box*/
@@ -138,8 +137,12 @@ h5 {
 }
 
 #map-appear-here {
-
     background: rgba(138, 119, 97, 0.3);
+}
+
+#map{
+    height: 500px;
+    width: 100%;
 }
 
 .footer {
@@ -154,3 +157,56 @@ h5 {
 }
 
 /* MEDIA QUERIES */
+@media screen and (max-width: 1190px) {
+    .card-img-top{
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    button {
+        margin: 2%;
+    }
+    .btn-outline-warning {
+        border-radius: 65px;
+        width: 75px;
+        height: 75px;
+        line-height: 1.22;
+    }
+    .main-carousel {
+        margin-left: 0;
+        margin-top: 1%;
+        width: 90%;
+    }
+
+    .card-deck{
+        width: 70%;
+        margin-left: 80px;
+    }
+    #map{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 575px){
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    h5 {
+        font-size: 1rem;
+    }
+    .card-img-top{
+        width: 300px;
+        height: 400px;
+    }
+    #map{
+        height: 300px;
+        width: 300px;
+    }
+}

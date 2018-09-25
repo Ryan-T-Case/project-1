@@ -61,7 +61,7 @@ $.ajax({
           </div>
           <div class="card-footer">
             <small class="text-muted">
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+              <button type="button" class="btn btn-warning click-for-recipe" data-toggle="modal" data-target=".bd-example-modal-lg">Click
                 for Recipe!</button>
               <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
