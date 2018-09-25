@@ -45,15 +45,11 @@ function returnSearchResultsForApi() {
           servings: servings,
           title: title
         }
-        recipeArray.push(recipe);
-
-      }
-      console.log("Recipe Array " + recipeArray);
-      for (var i = 0; i < 9; i++) {
-        $(`#${i + 1}`).html(`
-            <img class="card-img-top" src="${recipeArray[i].image}" alt="Recipe Image"
+        console.log("Recipe Array " + recipeArray);
+        for (var i = 0; i < 9; i++) {
+            $(`#${i + 1}`).html(`
+            <img class="card-img-top card-image" src="${recipeArray[i].image}" alt="Recipe Image"
             style="position:relative">
-          <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon" style="position:absolute;left:0;top:0;"></button>
           <div class="card-body">
             <h5 class="card-title" id="recipe-name">${recipeArray[i].title}</h5>
             <p class="card-text">"Servings: ${recipeArray[i].servings}"</p>
@@ -77,28 +73,28 @@ function returnSearchResultsForApi() {
                       <img class="recipe-image">
                     </div>
                     <div class="container-fluid">
-                      <div class="row">
+                      <div class="row recipe-pre">
                         <div class="col-md-4 ml-auto vl display-servings"></div>
                         <div class="col-md-4 ml-auto vl display-cook-time"></div>
                         <div class="col-md-4 ml-auto display-likes"></div>
                       </div>
                       <br>
                       <div class="row">
-                        <div class="col-lg-10 ml-auto">
+                        <div class="col-md-12 ml-auto">
                           <div data-target="ingredients">
                             <h3>Ingredients: </h3>
                           </div>
-                          <ul id="ingredients-appear-here"></ul>
+                          <ul class="recipe-content" id="ingredients-appear-here"></ul>
                         </div>
 
                       </div>
                       <br>
                       <div class="row">
-                        <div class="col-lg-10 ml-auto">
+                        <div class="col-lg-12 ml-auto">
                           <div data-target="instructions">
                             <h3>Instructions: </h3>
                           </div>
-                          <div id="instructions-appear-here"></div>
+                          <div class="recipe-content" id="instructions-appear-here"></div>
                         </div>
                       </div>
                       <div class="row">
@@ -108,9 +104,8 @@ function returnSearchResultsForApi() {
                         </div>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-warning send-to-shopping-list" data-toggle="modal" data-target=".bd-example-modal-lg">Add Ingredients to Shopping List</button>
-                      <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
+                    <div class="modal-footer"> 
+                    <button class="btn btn-outline-danger btn-circle" data-icon="favorite-icon"></button>
                     </div>
                   </div>
                 </div>
@@ -121,6 +116,12 @@ function returnSearchResultsForApi() {
       }
     })
 };
+
+//make it highlight on click
+$('li', 'p').click(function(){
+  $(this).css('color','orange');
+  console.log("click");
+});
 
 //Search Results Functionality
 
@@ -228,77 +229,77 @@ function makeRecipeObjectForDisplayInRecipeView() {
         "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
       }
     })
-    .then(function (response) {
-      console.log(response);
-      var steps = [];
-      //Below the variables for the recipe object are being pulled and stored for creating the variable at the bottom
-      for (var i = 0; i < response.analyzedInstructions[0].steps.length; i++) {
-        console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " " + response.analyzedInstructions[0].steps[i].step);
-        var index = "Step " + response.analyzedInstructions[0].steps[i].number + ": " + response.analyzedInstructions[0].steps[i].step;
-        steps.push(index);
-      }
-      console.log("Recipe by: " + response.creditText);
-      var recipeSource = "Recipe by: " + response.creditText;
-      var ingredientArrayForDisplay = [];
-      var ingredientArrayForShoppingList = [];
+        .then(function (response) {
+            console.log(response);
+            var steps = [];
+            //Below the variables for the recipe object are being pulled and stored for creating the variable at the bottom
+            for (var i = 0; i < response.analyzedInstructions[0].steps.length; i++) {
+                console.log("Step: " + response.analyzedInstructions[0].steps[i].number + " " + response.analyzedInstructions[0].steps[i].step);
+                var index = "Step " + response.analyzedInstructions[0].steps[i].number + ": " + response.analyzedInstructions[0].steps[i].step;
+                steps.push(index);
+            }
+            console.log("Recipe by: " + response.creditText);
+            var recipeSource = "Recipe by: " + response.creditText;
+            var ingredientArrayForDisplay = [];
+            var ingredientArrayForShoppingList = [];
 
-      //for loop to loop through api and get ingredients
-      for (var i = 0; i < response.extendedIngredients.length; i++) {
-        var ingredientId = response.extendedIngredients[i].id;
-        var ingredientAmount = response.extendedIngredients[i].measures.us.amount;
-        var ingredientName = response.extendedIngredients[i].name;
-        var ingredientUnit = response.extendedIngredients[i].measures.us.unitLong;
-        var ingredientOriginal = response.extendedIngredients[i].original;
-        var ingredientsForShoppingList = {
-          ingredientId: ingredientId,
-          ingredientAmount: ingredientAmount,
-          ingredientName: ingredientName,
-          ingredientUnit: ingredientUnit
-        };
-        ingredientArrayForShoppingList.push(ingredientsForShoppingList);
-        ingredientArrayForDisplay.push(ingredientOriginal);
-      };
+            //for loop to loop through api and get ingredients
+            for (var i = 0; i < response.extendedIngredients.length; i++) {
+                var ingredientId = response.extendedIngredients[i].id;
+                var ingredientAmount = response.extendedIngredients[i].measures.us.amount;
+                var ingredientName = response.extendedIngredients[i].name;
+                var ingredientUnit = response.extendedIngredients[i].measures.us.unitLong;
+                var ingredientOriginal = response.extendedIngredients[i].original;
+                var ingredientsForShoppingList = {
+                    ingredientId: ingredientId,
+                    ingredientAmount: ingredientAmount,
+                    ingredientName: ingredientName,
+                    ingredientUnit: ingredientUnit
+                };
+                ingredientArrayForShoppingList.push(ingredientsForShoppingList);
+                ingredientArrayForDisplay.push(ingredientOriginal);
+            };
 
-      var ingredientsImageLInk = response.image;
-      var displayingRecipeId = response.id;
-      var cookTime = response.readyInMinutes;
-      var displayReciepServing = response.servings;
-      var displayAggregateLikes = response.aggregateLikes;
-      var displayRecipeTitle = response.title;
+            var ingredientsImageLInk = response.image;
+            var displayingRecipeId = response.id;
+            var cookTime = response.readyInMinutes;
+            var displayReciepServing = response.servings;
+            var displayAggregateLikes = response.aggregateLikes;
+            var displayRecipeTitle = response.title;
 
 
-      // object to be used to populate the recipe view when when the button on the search is selected
-      displayRecipe = {
-        steps: steps,
-        recipeSource: recipeSource,
-        displayIngredients: ingredientArrayForDisplay,
-        shoppingListINgredients: ingredientArrayForShoppingList,
-        image: ingredientsImageLInk,
-        recipeId: displayingRecipeId,
-        cookTime: cookTime,
-        servings: displayReciepServing,
-        aggregateLikes: displayAggregateLikes,
-        favorited: false,
-        title: displayRecipeTitle
-      };
+            // object to be used to populate the recipe view when when the button on the search is selected
+            displayRecipe = {
+                steps: steps,
+                recipeSource: recipeSource,
+                displayIngredients: ingredientArrayForDisplay,
+                shoppingListINgredients: ingredientArrayForShoppingList,
+                image: ingredientsImageLInk,
+                recipeId: displayingRecipeId,
+                cookTime: cookTime,
+                servings: displayReciepServing,
+                aggregateLikes: displayAggregateLikes,
+                favorited: false,
+                title: displayRecipeTitle
+            };
 
-      console.log(displayRecipe);
+            console.log(displayRecipe);
 
-      //display data in the recipe view window
-      $("#display-recipe-name").text(displayRecipe.title);
-      $(".recipe-image").attr("src", displayRecipe.image);
-      $(".display-servings").html(`<h4>Yields: ${displayRecipe.servings} servings</h4>`);
-      $(".display-cook-time").html(`<h4>Cook Time: ${displayRecipe.cookTime} minutes</h4>`);
-      $(".display-likes").html(`<h4>Likes: ${displayRecipe.aggregateLikes}</h4>`);
-      $("#ingredients-appear-here").empty();
-      for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
-        $("#ingredients-appear-here").append(`<li>${displayRecipe.displayIngredients[i]}</li>`);
-      }
-      $("#instructions-appear-here").empty();
-      for (var i = 0; i < displayRecipe.steps.length; i++) {
-        $("#instructions-appear-here").append(`<p>${displayRecipe.steps[i]}`);
-      }
-    });
+            //display data in the recipe view window
+            $("#display-recipe-name").text(displayRecipe.title);
+            $(".recipe-image").attr("src", displayRecipe.image);
+            $(".display-servings").html(`<h4>Yields: ${displayRecipe.servings} servings</h4>`);
+            $(".display-cook-time").html(`<h4>Cook Time: ${displayRecipe.cookTime} minutes</h4>`);
+            $(".display-likes").html(`<h4>Likes: ${displayRecipe.aggregateLikes}</h4>`);
+            $("#ingredients-appear-here").empty();
+            for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
+              $("#ingredients-appear-here").append(`<input type="checkbox"/ p>${displayRecipe.displayIngredients[i]}<br>`);
+            }
+            $("#instructions-appear-here").empty();
+            for (var i = 0; i < displayRecipe.steps.length; i++) {
+              $("#instructions-appear-here").append(`<p>${displayRecipe.steps[i]}`);
+            }
+        });
 };
 
 
