@@ -300,3 +300,40 @@ $(document.body).on("click", ".search-result", function () {
 
 
 //TO DO: Function that populates recipe object on the recipe view 
+
+
+database.ref().on("child_added", function (childSnapshot) {
+  console.log("child added");
+  var favorites = childSnapshot.val().favorites;
+  console.log("firebase: ")
+
+  console.log(childSnapshot.val().favorite[i]);
+
+  console.log("----------------------------------------");
+    // console.log("favorites length: " + favorite.length);
+    
+//     function getSingleDatabase() {
+//         this.collectionReference=this.db.collection('posts');
+//         this.collectionReference.get()
+//         .then(snapshot =>{
+//           snapshot.forEach(doc => {
+//             this.firstGet.push(doc.data());
+//           });
+//         })
+//         .catch(err =>{
+//           console.log(err);
+//         });
+//         return this.firstGet;
+//       };
+//       getSingleDatabase()
+//   .then(firstGet => {
+//      //do whatever you need to with the value here
+//      console.log('result:', firstGet);
+//   });
+
+var newRow = $("<tr>").append(
+  $("<td>").text(favorites)
+  );
+$("#favoritesSection").append(newRow);
+
+});
