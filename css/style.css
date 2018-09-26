@@ -124,7 +124,7 @@ button {
     font-size: 1rem;
     padding: 8%;
 }
-p:hover{
+#instructions-appear-here p:hover{
     color: orange;
 }
 /*shopping + map page*/
@@ -140,12 +140,13 @@ p:hover{
         background: rgba(212, 150, 73, 0.3);
         text-shadow: 0 0 20px rgb(148, 133, 133);
         padding: 2%;
-        font-size: 35px;
+        font-size: 80%;
         max-width: 60%;
-        height: 600px;
+        height: auto;
         margin-left: 20%;
         color: white;
         position: relative;
+        overflow: auto;
 }
 #map{
     height: 500px;

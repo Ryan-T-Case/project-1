@@ -1,3 +1,13 @@
+//Signing in
+$(".hello").hide();
+$("#log-in").click(function () {
+  $(".hello").show();
+  $("#username").empty();
+  var username = $("#validationDefault01").val();
+  $("#username").text(username);
+})
+
+
 //Getting Data From the API and putting into an object
 
 //Array of recipes with data to populate search results.  Starts empty and changes based on the search button that is selected.
@@ -58,62 +68,66 @@ function returnSearchResultsForApi() {
             <p class="card-text">"Servings: ${recipeArray[i].servings}"</p>
             <p class="card-text">"Preparation Time: ${recipeArray[i].readyInMinutes} minutes"</p>
           </div>
+          
           <div class="card-footer">
             <small class="text-muted">
               <button type="button" class="btn btn-warning view-recipe" data-recipeId="${recipeArray[i].id}" data-toggle="modal" data-target=".bd-example-modal-lg">Click
                 for Recipe!</button>
-              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="display-recipe-name"></h3>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <img class="recipe-image">
-                    </div>
-                    <div class="container-fluid">
-                      <div class="row recipe-pre">
-                        <div class="col-md-4 ml-auto vl display-servings"></div>
-                        <div class="col-md-4 ml-auto vl display-cook-time"></div>
-                        <div class="col-md-4 ml-auto display-likes"></div>
+              <div id="printJS-form">
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="modal-title" id="display-recipe-name"></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                       </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-12 ml-auto">
-                          <div data-target="ingredients">
-                            <h3>Ingredients: </h3>
-                          </div>
-                          <ul class="recipe-content" id="ingredients-appear-here"></ul>
+                      <div class="modal-body">
+                        <img class="recipe-image">
+                      </div>
+                      <div class="container-fluid">
+                        <div class="row recipe-pre">
+                          <div class="col-md-4 ml-auto vl display-servings"></div>
+                          <div class="col-md-4 ml-auto vl display-cook-time"></div>
+                          <div class="col-md-4 ml-auto display-likes"></div>
                         </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-12 ml-auto">
+                            <div data-target="ingredients">
+                              <h3>Ingredients: </h3>
+                            </div>
+                            <ul class="recipe-content" id="ingredients-appear-here"></ul>
+                          </div>
 
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-lg-12 ml-auto">
-                          <div data-target="instructions">
-                            <h3>Instructions: </h3>
-                          </div>
-                          <div class="recipe-content" id="instructions-appear-here"></div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-10 ml-auto">
-                          <div class="display-source">
+                        <br>
+                        <div class="row">
+                          <div class="col-lg-12 ml-auto">
+                            <div data-target="instructions">
+                              <h3>Instructions: </h3>
+                            </div>
+                            <div class="recipe-content" id="instructions-appear-here"></div>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-lg-10 ml-auto">
+                            <div class="display-source">
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="modal-footer"> 
-                    <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon"></button>
+                      <div class="modal-footer">
+                      <button type=“button” data-icon=“printer”> Print Recipe</button> 
+                      <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon" id="to-shopping-list"></button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </small>
+              </small>
+            </div>
           </div>
             `)
       }
@@ -167,9 +181,22 @@ $(document.body).on("click", "button", function () {
     console.log("Search results " + searchQuery);
     returnSearchResultsForApi();
 
+  } else if ($(this).attr("data-icon") === 'printer') {
+    printJS('printJS-form', 'html');
+    console.log("printer");
   }
 
 });
+
+//Shopping List Functionality
+$(document).on("click", "#to-shopping-list", function () {
+  alert("Your Shopping List Has Been Updated");
+  $("#my-shopping-list").empty();
+  for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
+    $("#my-shopping-list").append(`<li>${displayRecipe.displayIngredients[i]}</li>`);
+  }
+});
+
 
 // google maps code below
 // locations are hard coded in for this version. placed by coordinates
