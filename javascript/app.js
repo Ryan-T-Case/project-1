@@ -120,7 +120,7 @@ function returnSearchResultsForApi() {
                         </div>
                       </div>
                       <div class="modal-footer">
-                      <button type=“button” data-icon=“printer”> Print Recipe</button> 
+                      <button type="button" data-icon="printer"> Print Recipe</button> 
                       <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon" id="to-shopping-list"></button>
                       </div>
                     </div>
@@ -183,7 +183,7 @@ $(document.body).on("click", "button", function () {
 
   } else if ($(this).attr("data-icon") === 'printer') {
     printJS('printJS-form', 'html');
-    console.log("printer");
+    console.log("Test" + "printer");
   }
 
 });
