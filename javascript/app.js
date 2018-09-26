@@ -285,18 +285,19 @@ $(document).on("click", "#to-shopping-list", function () {
   for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
     database.ref(`${username}/shoppinglist`).push(displayRecipe.displayIngredients[i]);
   }
-  database.ref(`/${username}/shoppinglist`).once("value").then(function (snapshot) {
-    console.log(snapshot.val());
-    console.log(Object.values(snapshot.val()));
 
-    arrayOfInfgredientsFromFirebase = Object.values(snapshot.val());
-    // arrayOfInfgredientsFromFirebase = arrayOfInfgredientsFromFirebase.splice(",");
-    console.log(arrayOfInfgredientsFromFirebase);
-    
-    for (var i = 0; i < arrayOfInfgredientsFromFirebase.length; i++) {
-      $("#my-shopping-list").append(`<li>${arrayOfInfgredientsFromFirebase[i]}</li>`);
-    }
-  });
+});
+database.ref(`/${username}/shoppinglist`).once("value").then(function (snapshot) {
+  console.log(snapshot.val());
+  console.log(Object.values(snapshot.val()));
+
+  arrayOfInfgredientsFromFirebase = Object.values(snapshot.val());
+  // arrayOfInfgredientsFromFirebase = arrayOfInfgredientsFromFirebase.splice(",");
+  console.log(arrayOfInfgredientsFromFirebase);
+  
+  for (var i = 0; i < arrayOfInfgredientsFromFirebase.length; i++) {
+    $("#my-shopping-list").append(`<li>${arrayOfInfgredientsFromFirebase[i]}</li>`);
+  }
 });
 
 
