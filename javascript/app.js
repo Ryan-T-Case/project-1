@@ -341,6 +341,7 @@ $(document).on("click", ".view-recipe", function () {
   makeRecipeObjectForDisplayInRecipeView()
 });
 
+
 database.ref().on("child_added", function (childSnapshot) {
   console.log("child added");
   var favorites = childSnapshot.val().favorites;
