@@ -19,14 +19,14 @@ var searchQuery = "";
 function returnSearchResultsForApi() {
 
   $.ajax({
-      // the headers are required by the API
-      url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&excludeIngredients=coconut&intolerances=egg%2C+gluten&number=10&offset=0&query=" + searchQuery + "&type=main+course",
-      method: "GET",
-      headers: {
-        "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
-        "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
-      }
-    })
+    // the headers are required by the API
+    url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&excludeIngredients=coconut&intolerances=egg%2C+gluten&number=10&offset=0&query=" + searchQuery + "&type=main+course",
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+      "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+    }
+  })
     .then(function (response) {
       // console.log for testing
       console.log(response);
@@ -61,74 +61,70 @@ function returnSearchResultsForApi() {
       console.log("Recipe Array " + recipeArray);
       for (var i = 0; i < 9; i++) {
         $(`#${i + 1}`).html(`
-            <img class="card-img-top card-image" src="${recipeArray[i].image}" alt="Recipe Image"
+          <img class="card-img-top card-image" src="${recipeArray[i].image}" alt="Recipe Image"
             style="position:relative">
           <div class="card-body">
             <h5 class="card-title" id="recipe-name">${recipeArray[i].title}</h5>
             <p class="card-text">"Servings: ${recipeArray[i].servings}"</p>
             <p class="card-text">"Preparation Time: ${recipeArray[i].readyInMinutes} minutes"</p>
           </div>
-          
-          <div class="card-footer">
-            <small class="text-muted">
-              <button type="button" class="btn btn-warning view-recipe" data-recipeId="${recipeArray[i].id}" data-toggle="modal" data-target=".bd-example-modal-lg">Click
+<div class="card-footer">
+  <small class="text-muted">
+                <button type="button" class="btn btn-warning view-recipe" data-recipeId="${recipeArray[i].id}" data-toggle="modal" data-target=".bd-example-modal-lg">Click
                 for Recipe!</button>
-              <div id="printJS-form">
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h3 class="modal-title" id="display-recipe-name"></h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <img class="recipe-image">
-                      </div>
-                      <div class="container-fluid">
-                        <div class="row recipe-pre">
-                          <div class="col-md-4 ml-auto vl display-servings"></div>
-                          <div class="col-md-4 ml-auto vl display-cook-time"></div>
-                          <div class="col-md-4 ml-auto display-likes"></div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <div id="printJS-form">
+                        <div class="modal-header">
+                           <h3 class="modal-title" id="display-recipe-name"></h3>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                           </button>
                         </div>
-                        <br>
-                        <div class="row">
-                          <div class="col-md-12 ml-auto">
-                            <div data-target="ingredients">
-                              <h3>Ingredients: </h3>
+                        <div class="modal-body">
+                          <img class="recipe-image">
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row recipe-pre">
+                              <div class="col-md-4 ml-auto vl display-servings"></div>
+                              <div class="col-md-4 ml-auto vl display-cook-time"></div>
+                              <div class="col-md-4 ml-auto display-likes"></div>
                             </div>
-                            <ul class="recipe-content" id="ingredients-appear-here"></ul>
-                          </div>
-
-                        </div>
-                        <br>
-                        <div class="row">
-                          <div class="col-lg-12 ml-auto">
-                            <div data-target="instructions">
-                              <h3>Instructions: </h3>
+                            <br>
+                            <div class="row">
+                                  <div class="col-md-12 ml-auto">
+                                    <div data-target="ingredients">
+                                      <h3>Ingredients: </h3>
+                                    </div>
+                                    <ul class="recipe-content" id="ingredients-appear-here"></ul>
+                                  </div>
                             </div>
-                            <div class="recipe-content" id="instructions-appear-here"></div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-10 ml-auto">
-                            <div class="display-source">
+                            <br>
+                            <div class="row">
+                                 <div class="col-lg-12 ml-auto">
+                                      <div data-target="instructions">
+                                         <h3>Instructions: </h3>
+                                       </div>
+                                  <div class="recipe-content" id="instructions-appear-here"></div>
+                             </div>
+                             <div class="row">
+                                    <div class="col-lg-10 ml-auto">
+                                          <div class="display-source"></div>                           
+                                    </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="modal-footer">
-                      <button type="button" data-icon="printer"> Print Recipe</button> 
-                      <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon" id="to-shopping-list"></button>
-                      </div>
-                    </div>
+                        
+                        <div class="modal-footer">
+                              <button type="button" data-icon="printer"> Print Recipe</button> 
+                              <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon" id="to-shopping-list"></button>
+                        </div> 
                   </div>
-                </div>
-              </small>
-            </div>
           </div>
+       </div>
+    </div>
+  </small>
+</div>
             `)
       }
     })
@@ -181,9 +177,11 @@ $(document.body).on("click", "button", function () {
     console.log("Search results " + searchQuery);
     returnSearchResultsForApi();
 
-  } else if ($(this).attr("data-icon") === 'printer') {
+  } else if ($(this).attr("data-icon") === "printer") {
+    console.log("printer selected");
     printJS('printJS-form', 'html');
-    console.log("Test" + "printer");
+
+
   }
 
 });
@@ -199,91 +197,91 @@ $(document).on("click", "#to-shopping-list", function () {
 
 
 // google maps code below
-       // Initialize and add the map
-       function initMap() {
-        // The location of Richmond
-        var richmond = {
-            lat: 37.5759,
-            lng: -77.5410
-        };
-        // The map, centered at Richmond
-        var map = new google.maps.Map(
-            document.getElementById('map'), {
-                zoom: 13,
-                center: richmond
-            });
-        // The marker, positioned at Richmond
-        var marker = new google.maps.Marker({
-            position: richmond,
-            map: map
-        });
+// Initialize and add the map
+function initMap() {
+  // The location of Richmond
+  var richmond = {
+    lat: 37.5759,
+    lng: -77.5410
+  };
+  // The map, centered at Richmond
+  var map = new google.maps.Map(
+    document.getElementById('map'), {
+      zoom: 13,
+      center: richmond
+    });
+  // The marker, positioned at Richmond
+  var marker = new google.maps.Marker({
+    position: richmond,
+    map: map
+  });
 
-        var locations = [
-        ['Libbie Market <br>\
+  var locations = [
+    ['Libbie Market <br>\
         400 Libbie Ave, Richmond, VA 23226 <br>\
          <a href="https://goo.gl/maps/C4JJKphhfHF2">Get Directions</a>', 37.5746, -77.5182],
-        ['Kroger Willow Lawn<br>\
+    ['Kroger Willow Lawn<br>\
         1601 Willow Lawn Dr, Richmond, VA 23230<br>\
         <a href="https://goo.gl/maps/5XwxdriB9xK2">Get Directions</a>', 37.5802, -77.4991],
-        ['Aldi West Broad<br>\
+    ['Aldi West Broad<br>\
         6295 W Broad St, Richmond, VA 23230<br>\
         <a href="https://goo.gl/maps/gMV4u9ZfkjA2">Get Directions</a>', 37.5958, -77.513137],
-        
-        ['Lidl West Broad<br>\
+
+    ['Lidl West Broad<br>\
         4700 W Broad St, Richmond, VA 23230<br>\
         <a href="https://goo.gl/maps/BYyiWu2sppy">Get Directions</a>', 37.579832, -77.490471],
-               
-        ['Stellas Grocery - Monument Location<br>\
+
+    ['Stellas Grocery - Monument Location<br>\
         1007 Lafayette St, Richmond, VA 23221<br>\
         <a href="https://goo.gl/maps/WmaMe3fkaW42">Get Directions</a>', 37.56731, -77.486151],
-        
-        ['Ellwood Thompsons<br>\
+
+    ['Ellwood Thompsons<br>\
         4 N Thompson St, Richmond, VA 23221<br>\
         <a href="https://goo.gl/maps/PhDRWWp2ap72">Get Directions</a>', 37.557447, -77.488621],
-        
-        ['Kroger Carytown<br>\
+
+    ['Kroger Carytown<br>\
         3507 W Cary St, Richmond, VA 23221<br>\
         <a href="https://goo.gl/maps/5YTUaUypLh32">Get Directions</a>', 37.554478, -77.488031],
 
-        ['Linnie Food Mart<br>\
+    ['Linnie Food Mart<br>\
         8600 Patterson Ave, Richmond, VA 23229<br>\
         <a href="https://goo.gl/maps/CqY7vAdvqdM2">Get Directions</a>', 37.5950023, -77.56669950000003],
 
-        ['Pucks Market<br>\
+    ['Pucks Market<br>\
         A, 435-A N Ridge Rd, Henrico, VA 23229<br>\
-        <a href="https://goo.gl/maps/JzLUVxQuC292">Get Directions</a>', 37.582701 , -77.554188],
+        <a href="https://goo.gl/maps/JzLUVxQuC292">Get Directions</a>', 37.582701, -77.554188],
 
 
-        // ['Nicks International Foods<br>\
-        // address<br>\
-        // <a href="">Get Directions</a>', 37.574379, -77.481691]
+    // ['Nicks International Foods<br>\
+    // address<br>\
+    // <a href="">Get Directions</a>', 37.574379, -77.481691]
 
-        // ['Kroger Parham', 37.603089, -77.561696],
-        // ['Kroger Short Pump', 37.652874, -77.625489],
-        // ['grocery', 3333, 33333],
-        // https://www.gps-coordinates.net/ is a lifesaver.
-    ];
+    // ['Kroger Parham', 37.603089, -77.561696],
+    // ['Kroger Short Pump', 37.652874, -77.625489],
+    // ['grocery', 3333, 33333],
+    // https://www.gps-coordinates.net/ is a lifesaver.
+  ];
 
-                console.log(locations);
+  console.log(locations);
 
-    var infowindow = new google.maps.InfoWindow();
-    for (i = 0; i < locations.length; i++) {
+  var infowindow = new google.maps.InfoWindow();
+  for (i = 0; i < locations.length; i++) {
     marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i]
-            [2]),
-        map: map
+      position: new google.maps.LatLng(locations[i][1], locations[i]
+      [2]),
+      map: map
     });
 
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
-        return function () {
-            infowindow.setContent(locations[i][0]);
-            infowindow.open(map, marker);
-        }
+      return function () {
+        infowindow.setContent(locations[i][0]);
+        infowindow.open(map, marker);
+      }
     })(marker, i));
-}
-    
+  }
 
-    }
+
+}
 
 
 // end of google maps code
@@ -300,13 +298,13 @@ var displayRecipe = {};
 // Function that calls api to create an object for 
 function makeRecipeObjectForDisplayInRecipeView() {
   $.ajax({
-      url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeIdforViewing + "/information?includeNutrition=false",
-      method: "GET",
-      headers: {
-        "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
-        "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
-      }
-    })
+    url: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeIdforViewing + "/information?includeNutrition=false",
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": "M1t9h6bSWOmshPTVemfyZqQgd4ogp1HsYgsjsnSCG4Kb6mjzvX",
+      "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+    }
+  })
     .then(function (response) {
       console.log(response);
       var steps = [];
