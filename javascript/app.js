@@ -1,11 +1,88 @@
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCvczcDpxG0nIWYMR4Df_hPM4LiHGPnop4",
+  authDomain: "project-one-54fbd.firebaseapp.com",
+  databaseURL: "https://project-one-54fbd.firebaseio.com",
+  projectId: "project-one-54fbd",
+  storageBucket: "project-one-54fbd.appspot.com",
+  messagingSenderId: "945661053221"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+var username;
+
+console.log(username);
+signIn();
 //Signing in
-$(".hello").hide();
-$("#log-in").click(function () {
-  $(".hello").show();
-  $("#username").empty();
-  var username = $("#validationDefault01").val();
-  $("#username").text(username);
-})
+function signIn() {
+  if (localStorage.getItem("username") === null) {
+    $(".hello").hide();
+    $("#log-in").click(function () {
+      username = $("#validationDefault01").val();
+      database.ref(`/${username}`).set({ visits: 0 });
+      localStorage.setItem("username", username);
+      $("#username").text(username);
+      $("#sign-in").hide();
+      $(".hello").show();
+
+    });
+  }
+  else {
+    $("#sign-in").hide();
+    username = localStorage.getItem("username");
+    console.log(username);
+    $("#username").empty();
+    $(".hello").show();
+    $("#username").text(username);
+
+    database.ref(`/${username}/visits`).once("value").then(function (snapshot) {
+      console.log(snapshot.val());
+      var currentCount = snapshot.val();
+      currentCount++;
+      database.ref(`/${username}/visits`).set(currentCount);
+
+      // console.log(Object.keys(snapshot.val()));
+      // var firebaseFavorite = Object.values(snapshot.val());
+      // firebaseFavorite ++;
+      //  database.ref(`"/${name}/visit"`).update(firebaseFavorite);
+      // console.log(firebaseFavorite);
+    });
+
+  }
+
+
+
+
+
+}
+
+// database.ref(`"/${name}/favorite"`).once("value").then(function (snapshot) {
+
+//        console.log(Object.keys(snapshot.val()));
+//        var firebaseFavorite = Object.values(snapshot.val());
+//         firebaseFavorite.push(recipe2);
+//        console.log(firebaseFavorite);
+//       database.ref(`"${name}/favorite"`).set(firebaseFavorite);
+
+// });
+
+
+// $(".hello").hide();
+// $("#log-in").click(function () {
+
+
+
+
+//   $(".hello").show();
+//   $("#username").empty();
+
+//   var username = $("#validationDefault01").val();
+//   database.ref(`/${username}`).set("Shopping List");
+//   localStorage.setItem("username", username);
+//   $("#username").text(username);
+// })
 
 
 //Getting Data From the API and putting into an object
@@ -186,14 +263,53 @@ $(document.body).on("click", "button", function () {
 
 });
 
+
+
+function getIngredientsFromFirebase() {
+  database.ref(`/${username}/shoppinglist`).once("value").then(function (snapshot) {
+    console.log(snapshot.val());
+    console.log(Object.values(snapshot.val()));
+
+    var arrayOfInfgredientsFromFirebase = Object.values(snapshot.val());
+
+  });
+
+};
+
+var arrayOfInfgredientsFromFirebase = [];
 //Shopping List Functionality
 $(document).on("click", "#to-shopping-list", function () {
   alert("Your Shopping List Has Been Updated");
   $("#my-shopping-list").empty();
+  database.ref(`${username}/shoppinglist`).push(displayRecipe.displayIngredients[i]);
   for (var i = 0; i < displayRecipe.displayIngredients.length; i++) {
-    $("#my-shopping-list").append(`<li>${displayRecipe.displayIngredients[i]}</li>`);
+    database.ref(`${username}/shoppinglist`).push(displayRecipe.displayIngredients[i]);
   }
+  database.ref(`/${username}/shoppinglist`).once("value").then(function (snapshot) {
+    console.log(snapshot.val());
+    console.log(Object.values(snapshot.val()));
+
+    arrayOfInfgredientsFromFirebase = Object.values(snapshot.val());
+    // arrayOfInfgredientsFromFirebase = arrayOfInfgredientsFromFirebase.splice(",");
+    console.log(arrayOfInfgredientsFromFirebase);
+    
+    for (var i = 0; i < arrayOfInfgredientsFromFirebase.length; i++) {
+      $("#my-shopping-list").append(`<li>${arrayOfInfgredientsFromFirebase[i]}</li>`);
+    }
+  });
 });
+
+
+var arrayOfInfgredientsFromFirebase = [];
+function getIngredientsFromFirebase() {
+  database.ref(`/${username}/shoppinglist`).once("value").then(function (snapshot) {
+    console.log(snapshot.val());
+    console.log(Object.values(snapshot.val()));
+
+
+  });
+
+}
 
 
 // google maps code below
@@ -379,47 +495,46 @@ function makeRecipeObjectForDisplayInRecipeView() {
 };
 
 
-
 // Function for turning search result selected into an object
 $(document).on("click", ".view-recipe", function () {
   event.preventDefault();
   recipeIdforViewing = $(this).attr("data-recipeId");
-  makeRecipeObjectForDisplayInRecipeView()
+  makeRecipeObjectForDisplayInRecipeView();
 });
 
 
-database.ref().on("child_added", function (childSnapshot) {
-  console.log("child added");
-  var favorites = childSnapshot.val().favorites;
-  console.log("firebase: ")
+// database.ref(`${username}`).on("child_added", function (childSnapshot) {
+//   console.log("child added");
+//   var favorites = childSnapshot.val().favorites;
+//   console.log("firebase: ")
 
-  console.log(childSnapshot.val().favorite[i]);
+//   console.log(childSnapshot.val().favorite[i]);
 
-  console.log("----------------------------------------");
-  // console.log("favorites length: " + favorite.length);
+//   console.log("----------------------------------------");
+//   // console.log("favorites length: " + favorite.length);
 
-  //     function getSingleDatabase() {
-  //         this.collectionReference=this.db.collection('posts');
-  //         this.collectionReference.get()
-  //         .then(snapshot =>{
-  //           snapshot.forEach(doc => {
-  //             this.firstGet.push(doc.data());
-  //           });
-  //         })
-  //         .catch(err =>{
-  //           console.log(err);
-  //         });
-  //         return this.firstGet;
-  //       };
-  //       getSingleDatabase()
-  //   .then(firstGet => {
-  //      //do whatever you need to with the value here
-  //      console.log('result:', firstGet);
-  //   });
+//   //     function getSingleDatabase() {
+//   //         this.collectionReference=this.db.collection('posts');
+//   //         this.collectionReference.get()
+//   //         .then(snapshot =>{
+//   //           snapshot.forEach(doc => {
+//   //             this.firstGet.push(doc.data());
+//   //           });
+//   //         })
+//   //         .catch(err =>{
+//   //           console.log(err);
+//   //         });
+//   //         return this.firstGet;
+//   //       };
+//   //       getSingleDatabase()
+//   //   .then(firstGet => {
+//   //      //do whatever you need to with the value here
+//   //      console.log('result:', firstGet);
+//   //   });
 
-  var newRow = $("<tr>").append(
-    $("<td>").text(favorites)
-  );
-  $("#favoritesSection").append(newRow);
+//   var newRow = $("<tr>").append(
+//     $("<td>").text(favorites)
+//   );
+//   $("#favoritesSection").append(newRow);
 
-});
+// })}
