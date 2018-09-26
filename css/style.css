@@ -1,72 +1,53 @@
 
+/*header*/
 .page-header{
     text-align: center;
-    font-size: 65%;
     background-image: url("../images/header5.png");
-    color: orange;
+    color: rgb(255,193,7);
     background-size: 10%;
     background-repeat: no-repeat;
     letter-spacing: 3px;
 }
-
 h1 {
     font-size: 5.5rem;
     font-family: 'Playfair Display', serif;
     font-weight: 800;
     margin-top: 2%;
 }
-
 .definition-noun{
     margin-right: 33%;
 }
 .definition-noun, .definition{
     font-family: 'Open Sans', sans-serif;
     color: orange;
-    text-align: center;
     font-weight: 100;
 }
 
-/* .nav-tabs, #v-pills-tab, .nav-link:not(.active) {
-    background: rgba(255, 178, 85, 0.3);
+/*sign in box*/
+#sign-in{
+    font-size: 1.5rem;
     color: white;
+    font-family: 'Playfair Display', serif;
+}
+.hello{
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    color: rgb(255,193,7);
+}
+.modal-title{
+    color: rgb(255,193,7);
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+h5 {
+    font-weight: 800;
 }
 
-.nav-tabs {
-    width: 95px;
-}
-
-.nav-link{
-    border: 5px solid white;
-
-} */
-
-
-.btn-outline-warning{
-    border-radius: 85px;
-    width: 95px;
-    height: 95px;
-    line-height: 3.33;
-}
-
-.btn-outline-danger{
-    border-radius:35px;
-    width: 35px;
-    height: 35px;
-    background: url("../images/heart-sm.png");
-    background-size: 100%;
-}
-
-button {
-    margin: 1%;
-    box-shadow: 4px 5px rgb(134, 114, 94, .2);
-    float: right;
-}
-
-.intro, .end-intro {
-    text-align: center;
+/*Please select a category!*/
+.intro {
+    margin-top: 40px;
     color: orange;
     font-family: 'Satisfy', cursive;
-    margin: 2%;
     animation: fadein 5s;
 }
 @-webkit-keyframes fadein { 
@@ -78,39 +59,75 @@ button {
     }
 }
 
+/*buttons*/
+.btn-outline-warning{
+    border-radius: 85px;
+    width: 95px;
+    height: 95px;
+    line-height: 3.33;
+    float: right;
+}
+.btn-outline-info{
+    border-radius: 65px;
+    width: 55px;
+    height: 55px;
+    background: url("../images/shopping-cart.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+button {
+    margin: 1%;
+    box-shadow: 4px 5px rgb(134, 114, 94, .2);
+}
+
+/*main page content*/
 .main-carousel {
     margin-left: 1%;
     margin-top: 5%;
 }
-
 .carousel-item {
-    width: 1000px;
+    width: 100%;
     height: 563px;
 }
 
+/*search result*/
+.card-img-top{
+    width: 100%;
+    height: 200px;
+}
 .card-title, .card-text{
     font-family: 'Playfair Display', serif;
     
 }
-
-h5 {
-    font-weight: 800;
-}
-
 .card-deck {
     margin: 5%;
 }
-
 .card{
     box-shadow: 2px 5px rgb(134, 114, 94, .2);
 }
+.view-recipe{
+    width: 100%;
+    font-size: 100%;
+    margin-right: 5%;
+    color: white;
+}
 
-/*pop up box*/
+/*pop up box - recipe detail*/
+.recipe-image{
+    margin-left: 13%;
+}
 .vl{
     border-right: 1px solid grey;
     height: 100px;
 }
-
+.recipe-content{
+    font-size: 1rem;
+    padding: 8%;
+}
+p:hover{
+    color: orange;
+}
+/*shopping + map page*/
 .shopping-list, .favorite-list {
     font-family: 'Satisfy', cursive;
     color: orange;
@@ -118,7 +135,6 @@ h5 {
     font-size: 50px;
     text-align: center;
 }
-
 .shopping-container {
         margin-top: 2%;
         background: rgba(212, 150, 73, 0.3);
@@ -131,20 +147,153 @@ h5 {
         color: white;
         position: relative;
 }
-
-#map-appear-here {
+#map{
     height: 500px;
-    background: rgba(138, 119, 97, 0.3);
+    width: 100%;
 }
 
-.footer {
+/*footer*/
+footer {
     padding: 10px;
-    background-color: orange;
+    background-color: rgb(255,193,7);
     color: white;
     text-align: center;
     border-top: 4px solid orange;
     margin-top: 10%;
     position: relative;
     height: 50px;
+    font-family: 'Playfair Display', serif;
+    
 }
 
+/* MEDIA QUERIES */
+@media screen and (max-width: 1190px) {
+    .card-img-top{
+        width: 100%;
+        height: 250px;
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    .page-header{
+        background-size: 15%;
+    }
+    .view-recipe{
+        width: 100%;
+        font-size: 90%;
+        margin-right: 0;
+    }
+    button {
+        margin: 2%;
+    }
+    .btn-outline-warning {
+        border-radius: 65px;
+        width: 75px;
+        height: 75px;
+        line-height: 1.22;
+    }
+    .button-image{
+        width: 100%;
+    }
+    .main-carousel {
+        margin-left: 0;
+        margin-top: 1%;
+        width: 90%;
+    }
+    .carousel-inner{
+        width: 115%;
+    }
+    .card-deck{
+        width: 70%;
+        margin-left: 80px;
+    }
+    .recipe-image {
+        margin-left: 0;
+        width: 100%;
+    }
+    #map{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 575px){
+    body{
+        padding: 0;
+        margin: 0;
+    }
+    .page-header{
+        background-size: 20%;
+    }
+    h5 {
+        font-size: 1rem;
+    }
+    .carousel-inner{
+        width: 115%;
+    }
+    .card-img-top{
+        width: 400px;
+        height: 400px;
+    }
+    .recipe-pre{
+        flex-wrap: nowrap;
+    }
+    #map{
+        height: 300px;
+        width: 300px;
+    }
+}
+
+/*iphone x*/
+@media screen and (max-width: 375px){
+    .page-header{
+        background-size: 20%;
+        letter-spacing: 0;
+    }
+    h1 {
+        font-size: 4rem;
+        font-weight: 300;
+        margin-top: 2%;
+    }
+    .btn-outline-warning{
+        border-radius: 55px;
+        width: 65px;
+        height: 65px;
+        line-height: 3.33;
+    }
+    button {
+        margin: 0%;
+    }
+    .intro{
+        margin-top: 0;
+    }
+    .carousel-item{
+        margin-top: 6%;
+    }
+    .carousel {
+        width: 110%;
+    }
+    .card-img-top {
+        width: 260px;
+        height: 200px;
+    }
+    .card-deck{
+        margin-left: 15%;
+    }
+    .recipe-image {
+        margin-left: 0;
+        width: 100%;
+    }
+    .recipe-pre{
+        flex-wrap: nowrap;
+    }
+}
+/* google maps */
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+   }
