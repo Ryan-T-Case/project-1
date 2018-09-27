@@ -2,9 +2,9 @@
 /*header*/
 .page-header{
     text-align: center;
-    background-image: url("../images/header5.png");
+    background-image: url("../images/header13.gif");
     color: rgb(255,193,7);
-    background-size: 10%;
+    background-size: 20%;
     background-repeat: no-repeat;
     letter-spacing: 3px;
 }
@@ -131,7 +131,7 @@ button {
     font-size: 1rem;
     padding: 8%;
 }
-p:hover{
+#instructions-appear-here p:hover{
     color: orange;
 }
 
@@ -148,12 +148,13 @@ p:hover{
         background: rgba(212, 150, 73, 0.3);
         text-shadow: 0 0 20px rgb(148, 133, 133);
         padding: 2%;
-        font-size: 35px;
+        font-size: 130%;
         max-width: 60%;
-        height: 600px;
+        height: auto;
         margin-left: 20%;
         color: white;
         position: relative;
+        overflow: auto;
 }
 
 /* google maps */
@@ -242,6 +243,15 @@ footer {
     .carousel-inner{
         width: 115%;
     }
+    .btn-outline-warning{
+        border-radius: 65px;
+        width: 70px;
+        height: 70px;
+        line-height: 3.33;
+    }
+    .button-image{
+        width: 90%;
+    }
     .card-deck{
         width: 100%;
         margin-left: 0%;
@@ -289,7 +299,7 @@ button {
 
 }
 
-@media only screen and (min-width : 480px) and (max-width : 595px) {
+@media only screen and (min-width : 420px) and (max-width : 595px) {
     .page-header{
         background-size: 18%;
     }
@@ -324,7 +334,7 @@ button {
 
 }
 
-@media only screen and (min-width : 320px) and (max-width : 480px) {
+@media only screen and (min-width : 320px) and (max-width : 420px) {
     .page-header{
         background-size: 18%;
         letter-spacing: 0;
@@ -341,7 +351,8 @@ button {
         line-height: 3.33;
     }
     button {
-        margin: 1%;
+        margin: 0%;
+        box-shadow: 2px 3px rgb(134, 114, 94, .2);
     }
     .button-image{
         width: 100%;
