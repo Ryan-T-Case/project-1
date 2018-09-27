@@ -193,7 +193,7 @@ function returnSearchResultsForApi() {
                         </div>
                         
                         <div class="modal-footer">
-                              <button type="button" data-icon="printer"> Print Recipe</button> 
+                              <button class="btn btn-outline-primary btn-circle" type="button" data-icon="printer"></button> 
                               <button class="btn btn-outline-info btn-circle" data-icon="shopping-icon" id="to-shopping-list"></button>
                         </div> 
                   </div>
