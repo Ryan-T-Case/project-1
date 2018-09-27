@@ -145,14 +145,13 @@ button {
 }
 .shopping-container {
         margin-top: 2%;
-        background: rgba(212, 150, 73, 0.3);
-        text-shadow: 0 0 20px rgb(148, 133, 133);
+        background: rgba(235, 194, 145, 0.3);
         padding: 2%;
         font-size: 130%;
         max-width: 60%;
         height: auto;
         margin-left: 20%;
-        color: white;
+        color: orange;
         position: relative;
         overflow: auto;
 }
@@ -189,7 +188,7 @@ footer {
         margin: 0;
     }
     .page-header{
-        background-size: 12%;
+        background-size: 25%;
     }
     .view-recipe{
         width: 100%;
@@ -235,7 +234,7 @@ footer {
         margin: 0;
     }
     .page-header{
-        background-size: 15%;
+        background-size: 32%;
     }
     h5 {
         font-size: 1rem;
@@ -271,7 +270,7 @@ footer {
 
 @media only screen and (min-width : 595px) and (max-width : 690px) {
  .page-header{
-     background-size: 20%;
+     background-size: 32%;
 }
 .btn-outline-warning{
     border-radius: 65px;
@@ -301,7 +300,7 @@ button {
 
 @media only screen and (min-width : 420px) and (max-width : 595px) {
     .page-header{
-        background-size: 18%;
+        background-size: 32%;
     }
     h1 {
         font-size: 4.5rem;
@@ -334,15 +333,18 @@ button {
 
 }
 
-@media only screen and (min-width : 320px) and (max-width : 420px) {
+@media only screen and (min-width : 350px) and (max-width : 420px) {
     .page-header{
-        background-size: 18%;
+        background-size: 32%;
         letter-spacing: 0;
     }
     h1 {
         font-size: 4rem;
         font-weight: 300;
         margin-top: 2%;
+    }
+    #sign-in {
+        font-size: 1rem;
     }
     .btn-outline-warning{
         border-radius: 55px;
@@ -356,6 +358,57 @@ button {
     }
     .button-image{
         width: 100%;
+    }
+    .intro{
+        margin-top: 0;
+    }
+    .carousel-item{
+        margin-top: 6%;
+    }
+    .carousel {
+        width: 110%;
+    }
+  
+    .card-deck{
+        width: 100%;
+        margin-left: 0%;
+    }
+    .recipe-image {
+        margin-left: 0;
+        width: 100%;
+    }
+    .recipe-pre{
+        flex-wrap: nowrap;
+    }
+    h4{
+        font-size: 1rem;
+    }
+}
+@media only screen and (min-width : 300px) and (max-width : 350px) {
+    .page-header{
+        background-size: 32%;
+        letter-spacing: 0;
+    }
+    h1 {
+        font-size:3.5rem;
+        font-weight: 300;
+        margin-top: 2%;
+    }
+    #sign-in {
+        font-size: 1rem;
+    }
+    .btn-outline-warning{
+        border-radius: 45px;
+        width: 52px;
+        height: 52px;
+        line-height: 3.33;
+    }
+    button {
+        margin: 1%;
+        box-shadow: 2px 3px rgb(134, 114, 94, .2);
+    }
+    .button-image{
+        width: 110%;
     }
     .intro{
         margin-top: 0;
