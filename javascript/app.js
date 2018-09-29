@@ -219,7 +219,7 @@ $('li', 'p').click(function () {
 $("#preview-recipe").hide();
 
 //Click event that checks the data attribute of the search button clicked and returns the associated results from the spoonacular api
-$(document.body).on("click", "button", function () {
+$(document.body).on("click", "button", function (event) {
   event.preventDefault();
   //The display that shows when the app is opened should be hidden
   $(".intro-content").hide();
