@@ -34,7 +34,7 @@ If there are any problems or issues with this app, please contact the author.
 
 ## Authors
 
-The Psychic Game was developed by Ryan Case, Melissa Dericott, Alex Silvester, and Jenny Liang in 2018
+Food·ie was developed by Ryan Case, Melissa Dericott, Alex Silvester, and Jenny Liang in 2018
 
 You may contact Ryan via email at (Ryan_Case@outlook.com) with any questions.
 
