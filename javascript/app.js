@@ -508,7 +508,7 @@ function makeRecipeObjectForDisplayInRecipeView() {
 
 
 // Function for turning search result selected into an object
-$(document).on("click", ".view-recipe", function () {
+$(document).on("click", ".view-recipe", function (event) {
   event.preventDefault();
   recipeIdforViewing = $(this).attr("data-recipeId");
   makeRecipeObjectForDisplayInRecipeView();
